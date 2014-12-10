@@ -1,0 +1,33 @@
+{
+  "name": "grunt-wakeup",
+  "version": "0.0.1",
+  "description": "Add soothing sound notification to your grunt watch",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dominikwilkowski/grunt-wakeup"
+  },
+  "keywords": [
+    "grunt",
+    "notification"
+  ],
+  "author": {
+    "name": "Dominik Wilkowski",
+    "email": "hi@dominik-wilkowski.com",
+    "url": "http://dominik-wilkowski.com/"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE"
+  },
+  "bugs": {
+    "url": "https://github.com/dominikwilkowski/grunt-wakeup/issues"
+  },
+  "homepage": "https://github.com/dominikwilkowski/grunt-wakeup"
+}
