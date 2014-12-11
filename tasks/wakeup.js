@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 		if( OPTIONS.randomize ) { //randomize the sounds
 
 			if( Array.isArray( OPTIONS.randomize ) ) { //randomize your own sounds
-				newPath = OPTIONS.randomize[ Math.floor( Math.random() * OPTIONS.randomize.length ) ].replace(/ /g, '\\ ');
+				newPath = OPTIONS.randomize[ Math.floor( Math.random() * OPTIONS.randomize.length ) ];
 
 				if( fs.lstatSync(newPath).isFile() ) {
 					OPTIONS.sound = newPath;
@@ -90,14 +90,14 @@ module.exports = function(grunt) {
 		}
 
 		if( OPTIONS.custom.length > 0 ) { //custom sound
-			newPath = OPTIONS.custom.replace(/ /g, '\\ ');
+			newPath = OPTIONS.custom;
 
 			if( fs.lstatSync(newPath).isFile() ) {
 				OPTIONS.sound = newPath;
 			}
 		}
 
-		var $command = 'afplay ' + OPTIONS.sound + ( OPTIONS.volume === 0 ? '' : '  -v ' + OPTIONS.volume );
+		var $command = 'afplay ' + OPTIONS.sound.replace(/ /g, '\\ ') + ( OPTIONS.volume === 0 ? '' : '  -v ' + OPTIONS.volume );
 
 		var com = exec($command, function(err, stdout, stderr) { //execute command
 			if(err instanceof Error) {
