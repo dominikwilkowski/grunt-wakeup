@@ -190,6 +190,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 0.0.5 - __dirname fixes
 * 0.0.4 - path fixes
 * 0.0.3 - dependency fixes
 * 0.0.2 - refinements
