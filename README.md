@@ -1,7 +1,7 @@
 grunt-wakeup
 ============
 
-> Add soothing sound notification to your grunt watch
+> Add soothing sound notification to your grunt watch so you don't need to watch the watch.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -26,65 +26,169 @@ In your project's Gruntfile, add a section named `wakeup` to the data object pas
 ```js
 grunt.initConfig({
 	wakeup: {
-		options: {
-			// Task-specific options go here.
-		},
-		your_target: {
-			// Target-specific file lists and/or options go here.
-		},
+		wakeme: {},
 	},
 });
 ```
 
+
 ### Options
 
-#### options.separator
+
+#### options.custom
 Type: `String`
-Default value: `',  '`
+Default value: none
 
-A string value that is used to do something with whatever.
+You can use your own sound by providing a path to the file in this option.
 
-#### options.punctuation
+
+#### options.randomize
+Type: `Boolen` or `Array`
+Default value: `false`
+
+This setting can either be enabled which will casue the task to randomize the build-in sound notifications or it can be an array
+which then will be randomized. The array needs to include the paths for each sound file to be played.
+Formats that are supported include `AIFF`, `WAV`, `MP3` and `M4A`.
+
+
+#### options.sound
 Type: `String`
-Default value: `'.'`
+Default value: `'looking-up'`
 
-A string value that is used to do something else with whatever else.
+Chose from the below build-in sound notifications.
+
+- `bloom`
+- `concern`
+- `connected`
+- `full`
+- `gentle-roll`
+- `high-boom`
+- `hollow`
+- `hope`
+- `jump-down`
+- `jump-up`
+- `looking-down`
+- `looking-up` (default)
+- `nudge`
+- `picked`
+- `puff`
+- `realization`
+- `second-glance`
+- `stumble`
+- `suspended`
+- `turn`
+- `unsure`
+
+
+#### options.volume
+Type: `Integer`
+Default value: 0
+
+Set the volume of your sound notification between `0` and `10`. `0` means the current system volume will be used and is the default setting.
+
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used which will give you a nice easy shim.
 
 ```js
 grunt.initConfig({
 	wakeup: {
-		options: {},
-		files: {
-			'dest/default_options': ['src/testing', 'src/123'],
+		wakeme: {
+			options: {
+				sound: 'looking-up', //build-in sound
+				randomize: false, //randomize build-in sounds
+				custom: '', //custom sound file
+				volume: 0, //sound volume
+			},
 		},
 	},
 });
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+Choose a [build in sound](#optionssound).
 
 ```js
 grunt.initConfig({
 	wakeup: {
-		options: {
-			separator: ': ',
-			punctuation: ' !!!',
+		wakeme: {
+			options: {
+				sound: 'hollow',
+			}
 		},
-		files: {
-			'dest/default_options': ['src/testing', 'src/123'],
+	},
+});
+```
+
+This is how you would set your own array of sounds that are then [randomized](#optionsrandomize).
+
+```js
+grunt.initConfig({
+	wakeup: {
+		wakeme: {
+			options: {
+				randomize: [
+					'~/Library/Sounds/Grunt1.mp3',
+					'~/Library/Sounds/Grunt2.mp3',
+					'~/Library/Sounds/Grunt3.mp3',
+					'~/Library/Sounds/Grunt4.mp3',
+				],
+			}
+		},
+	},
+});
+```
+
+Or maybe you just one custom sound not [randomized](#optionsrandomize).
+
+```js
+grunt.initConfig({
+	wakeup: {
+		wakeme: {
+			options: {
+				custom: '~/Library/Sounds/Grunt1.mp3',
+			}
+		},
+	},
+});
+```
+
+You can also just randomize the [build-in sounds](#optionssound).
+
+```js
+grunt.initConfig({
+	wakeup: {
+		wakeme: {
+			options: {
+				randomize: true,
+			}
+		},
+	},
+});
+```
+
+Setting the [volume](optionsvolume) to high-ish.
+
+```js
+grunt.initConfig({
+	wakeup: {
+		wakeme: {
+			options: {
+				volume: 8,
+			}
 		},
 	},
 });
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal styleguide, take care to maintain the existing coding style.
+Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+0.0.1 - alpha test
+
+## License
+Copyright (c) 2014 Dominik Wilkowski. Licensed under the [MIT license](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE-MIT).

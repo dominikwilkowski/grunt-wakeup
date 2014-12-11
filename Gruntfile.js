@@ -10,64 +10,62 @@
 
 module.exports = function(grunt) {
 
-	// Project configuration.
+	//Dependencies
+	grunt.loadTasks('tasks');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	// grunt.loadNpmTasks('grunt-contrib-nodeunit');
+
 	grunt.initConfig({
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// JSHINT
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		jshint: {
+			options: {
+				jshintrc: '.jshintrc',
+			},
+
 			all: [
 				'Gruntfile.js',
 				'tasks/*.js',
-				'<%= nodeunit.tests %>'
 			],
-			options: {
-				jshintrc: '.jshintrc'
-			}
 		},
 
-		// Before generating any new files, remove any previously-created files.
-		clean: {
-			tests: ['tmp']
-		},
 
-		// Configuration to be run (and then tested).
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// WAKEUP
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		wakeup: {
-			default_options: {
-				options: {
+			wakeme: {
+				options: { //deviate from defaults
+					// sound: 'bloom', //differten build in sound
+					// randomize: true, //randomize build in sounds
+					// randomize: [
+					// 	'./sounds/hollow.mp3',
+					// 	'./sounds/realization.mp3',
+					// ],
+					// custom: './sounds/nudge.mp3', //run your own
+					// volume: 7,
 				},
-				files: {
-					'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-				}
 			},
-			custom_options: {
-				options: {
-					separator: ': ',
-					punctuation: ' !!!'
-				},
-				files: {
-					'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-				}
-			}
 		},
 
-		// Unit tests.
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// UNIT TESTS
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		nodeunit: {
-			tests: ['test/*_test.js']
-		}
+			tests: ['test/*_test.js'], //not sure how I'll test this yet :)
+		},
 
 	});
 
-	// Actually load this plugin's task(s).
-	grunt.loadTasks('tasks');
 
-	// These plugins provide necessary tasks.
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-nodeunit');
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------
+	// TASKS
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------
+	grunt.registerTask('test', ['wakeup'/*, 'nodeunit'*/]);
 
-	// Whenever the "test" task is run, first clean the "tmp" dir, then run this
-	// plugin's task(s), then test the result.
-	grunt.registerTask('test', ['clean', 'wakeup', 'nodeunit']);
-
-	// By default, lint and run all tests.
 	grunt.registerTask('default', ['jshint', 'test']);
 
 };
