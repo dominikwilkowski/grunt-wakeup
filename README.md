@@ -3,6 +3,8 @@ grunt-wakeup
 
 > Add soothing sound notification to your grunt watch so you don't need to watch the watch.
 
+[![NPM](https://nodei.co/npm/grunt-wakeup.png)](https://nodei.co/npm/grunt-wakeup/)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
