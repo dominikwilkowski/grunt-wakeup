@@ -1,7 +1,7 @@
 {
 	"name": "grunt-wakeup",
 	"description": "Add soothing sound notification to your grunt watch",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"homepage": "https://github.com/dominikwilkowski/grunt-wakeup",
 	"author": {
 		"name": "Dominik Wilkowski",
@@ -36,6 +36,10 @@
 	},
 	"peerDependencies": {
 		"grunt": "~0.4.5"
+	},
+	"dependencies": {
+		"chalk": "^0.5.1",
+		"exec": "^0.1.2"
 	},
 	"keywords": [
 		"gruntplugin",

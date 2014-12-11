@@ -39,27 +39,27 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask('wakeup', 'Add soothing sound notification to your grunt watch', function() {
 
 		var $sounds = { //array of all included sounds
-			'bloom': './sounds/bloom.mp3',
-			'concern': './sounds/concern.mp3',
-			'connected': './sounds/connected.mp3',
-			'full': './sounds/full.mp3',
-			'gentle-roll': './sounds/gentle-roll.mp3',
-			'high-boom': './sounds/high-boom.mp3',
-			'hollow': './sounds/hollow.mp3',
-			'hope': './sounds/hope.mp3',
-			'jump-down': './sounds/jump-down.mp3',
-			'jump-up': './sounds/jump-up.mp3',
-			'looking-down': './sounds/looking-down.mp3',
-			'looking-up': './sounds/looking-up.mp3',
-			'nudge': './sounds/nudge.mp3',
-			'picked': './sounds/picked.mp3',
-			'puff': './sounds/puff.mp3',
-			'realization': './sounds/realization.mp3',
-			'second-glance': './sounds/second-glance.mp3',
-			'stumble': './sounds/stumble.mp3',
-			'suspended': './sounds/suspended.mp3',
-			'turn': './sounds/turn.mp3',
-			'unsure': './sounds/unsure.mp3',
+			'bloom': __dirname + '/../sounds/bloom.mp3',
+			'concern': __dirname + '/../sounds/concern.mp3',
+			'connected': __dirname + '/../sounds/connected.mp3',
+			'full': __dirname + '/../sounds/full.mp3',
+			'gentle-roll': __dirname + '/../sounds/gentle-roll.mp3',
+			'high-boom': __dirname + '/../sounds/high-boom.mp3',
+			'hollow': __dirname + '/../sounds/hollow.mp3',
+			'hope': __dirname + '/../sounds/hope.mp3',
+			'jump-down': __dirname + '/../sounds/jump-down.mp3',
+			'jump-up': __dirname + '/../sounds/jump-up.mp3',
+			'looking-down': __dirname + '/../sounds/looking-down.mp3',
+			'looking-up': __dirname + '/../sounds/looking-up.mp3',
+			'nudge': __dirname + '/../sounds/nudge.mp3',
+			'picked': __dirname + '/../sounds/picked.mp3',
+			'puff': __dirname + '/../sounds/puff.mp3',
+			'realization': __dirname + '/../sounds/realization.mp3',
+			'second-glance': __dirname + '/../sounds/second-glance.mp3',
+			'stumble': __dirname + '/../sounds/stumble.mp3',
+			'suspended': __dirname + '/../sounds/suspended.mp3',
+			'turn': __dirname + '/../sounds/turn.mp3',
+			'unsure': __dirname + '/../sounds/unsure.mp3',
 		};
 
 
@@ -69,6 +69,7 @@ module.exports = function(grunt) {
 			custom: '',
 			volume: 0,
 		});
+		var newPath;
 
 		OPTIONS.sound = $sounds[ OPTIONS.sound ]; //get build in path
 
@@ -76,7 +77,7 @@ module.exports = function(grunt) {
 		if( OPTIONS.randomize ) { //randomize the sounds
 
 			if( Array.isArray( OPTIONS.randomize ) ) { //randomize your own sounds
-				var newPath = OPTIONS.randomize[ Math.floor( Math.random() * OPTIONS.randomize.length ) ].replace(/ /g, '\\ ');
+				newPath = OPTIONS.randomize[ Math.floor( Math.random() * OPTIONS.randomize.length ) ].replace(/ /g, '\\ ');
 
 				if( fs.lstatSync(newPath).isFile() ) {
 					OPTIONS.sound = newPath;
@@ -89,7 +90,7 @@ module.exports = function(grunt) {
 		}
 
 		if( OPTIONS.custom.length > 0 ) { //custom sound
-			var newPath = OPTIONS.custom.replace(/ /g, '\\ ');
+			newPath = OPTIONS.custom.replace(/ /g, '\\ ');
 
 			if( fs.lstatSync(newPath).isFile() ) {
 				OPTIONS.sound = newPath;
