@@ -38,14 +38,14 @@ grunt.initConfig({
 
 
 #### options.custom
-Type: `String`
+Type: `String`  
 Default value: none
 
 You can use your own sound by providing a path to the file in this option.
 
 
 #### options.randomize
-Type: `Boolen` or `Array`
+Type: `Boolen` or `Array`  
 Default value: `false`
 
 This setting can either be enabled which will casue the task to randomize the build-in sound notifications or it can be an array
@@ -54,7 +54,7 @@ Formats that are supported include `AIFF`, `WAV`, `MP3` and `M4A`.
 
 
 #### options.sound
-Type: `String`
+Type: `String`  
 Default value: `'looking-up'`
 
 Chose from the below build-in sound notifications.
@@ -83,8 +83,8 @@ Chose from the below build-in sound notifications.
 
 
 #### options.volume
-Type: `Integer`
-Default value: 0
+Type: `Integer`  
+Default value: `0`
 
 Set the volume of your sound notification between `0` and `10`. `0` means the current system volume will be used and is the default setting.
 
@@ -190,10 +190,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-0.0.4 - path fixes
-0.0.3 - dependency fixes
-0.0.2 - refinements
-0.0.1 - alpha test
+* 0.0.4 - path fixes
+* 0.0.3 - dependency fixes
+* 0.0.2 - refinements
+* 0.0.1 - alpha test
 
 ## License
 Copyright (c) 2014 Dominik Wilkowski. Licensed under the [MIT license](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE-MIT).
