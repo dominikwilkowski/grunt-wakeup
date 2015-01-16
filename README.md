@@ -190,6 +190,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 0.0.6 - updated license
 * 0.0.5 - __dirname fixes
 * 0.0.4 - path fixes
 * 0.0.3 - dependency fixes
@@ -197,4 +198,4 @@ Lint and test your code using [Grunt](http://gruntjs.com/).
 * 0.0.1 - alpha test
 
 ## License
-Copyright (c) 2014 Dominik Wilkowski. Licensed under the [MIT license](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE-MIT).
+Copyright (c) 2014 Dominik Wilkowski. Licensed under the [GNU-GPL license](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE).
