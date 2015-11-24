@@ -45,7 +45,7 @@ You can use your own sound by providing a path to the file in this option.
 
 
 #### options.randomize
-Type: `Boolen` or `Array`  
+Type: `Boolean` or `Array`  
 Default value: `false`
 
 This setting can either be enabled which will casue the task to randomize the build-in sound notifications or it can be an array
@@ -54,10 +54,10 @@ Formats that are supported include `AIFF`, `WAV`, `MP3` and `M4A`.
 
 
 #### options.sound
-Type: `String`  
+Type: `Boolean` or `String`  
 Default value: `'looking-up'`
 
-Chose from the below build-in sound notifications.
+Chose from the below build-in sound notifications. You can switch sound completely off by setting this to `false`.
 
 - `bloom`
 - `concern`
@@ -86,7 +86,15 @@ Chose from the below build-in sound notifications.
 Type: `Integer`  
 Default value: `0`
 
+**[DEPRICATED since 0.0.6]**  
 Set the volume of your sound notification between `0` and `10`. `0` means the current system volume will be used and is the default setting.
+
+
+#### options.notifications
+Type: `Boolean`  
+Default value: `false`
+
+If you don't have your headphones on but still want to know when your grunt tasks has run. Turn system notifications on.
 
 
 ### Usage Examples
@@ -103,6 +111,7 @@ grunt.initConfig({
 				randomize: false, //randomize build-in sounds
 				custom: '', //custom sound file
 				volume: 0, //sound volume
+				notifications: false, //system notifications
 			},
 		},
 	},
@@ -171,25 +180,28 @@ grunt.initConfig({
 });
 ```
 
-Setting the [volume](optionsvolume) to high-ish.
+
+Enabling the [notifications](optionsnotifications) and switching [sound](#optionssound) completely off.
 
 ```js
 grunt.initConfig({
 	wakeup: {
 		wakeme: {
 			options: {
-				volume: 8,
+				sound: false,
+				notifications: true,
 			}
 		},
 	},
 });
 ```
 
+
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style.
-Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 0.1.0 - removed volume option, added system notifications, added option to turn sound off
 * 0.0.5 - __dirname fixes
 * 0.0.4 - path fixes
 * 0.0.3 - dependency fixes
@@ -197,4 +209,4 @@ Lint and test your code using [Grunt](http://gruntjs.com/).
 * 0.0.1 - alpha test
 
 ## License
-Copyright (c) 2014 Dominik Wilkowski. Licensed under the [MIT license](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE-MIT).
+Copyright (c) 2014-2015 Dominik Wilkowski. Licensed under the [GNU GPLv2](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE).

@@ -2,17 +2,17 @@
  * grunt-wakeup
  * https://github.com/dominikwilkowski/grunt-wakeup
  *
- * Copyright (c) 2014 Dominik Wilkowski
- * Licensed under the MIT license.
+ * Copyright (c) 2014-2015 Dominik Wilkowski
+ * Licensed under the GNU GPLv2 license.
  */
 
 'use strict';
 
 //dependencies
-var chalk = require('chalk');
-var exec = require('exec');
-var path = require('path');
-var fs = require('fs');
+var Notifier = require('node-notifier');
+var Player = require('play-sound')();
+var Chalk = require('chalk');
+var Fs = require('fs');
 
 //get random value off of an object
 function randomize( obj ) {
@@ -67,45 +67,50 @@ module.exports = function(grunt) {
 			sound: this.options.sound || 'looking-up',
 			randomize: false,
 			custom: '',
-			volume: 0,
+			notifications: false,
 		});
 		var newPath;
 
-		OPTIONS.sound = $sounds[ OPTIONS.sound ]; //get build in path
+
+		if( OPTIONS.sound !== false ) { //sort out sounds
+			OPTIONS.sound = $sounds[ OPTIONS.sound ]; //get build in path
 
 
-		if( OPTIONS.randomize ) { //randomize the sounds
+			if( OPTIONS.randomize ) { //randomize the sounds
 
-			if( Array.isArray( OPTIONS.randomize ) ) { //randomize your own sounds
-				newPath = OPTIONS.randomize[ Math.floor( Math.random() * OPTIONS.randomize.length ) ];
+				if( Array.isArray( OPTIONS.randomize ) ) { //randomize your own sounds
+					newPath = OPTIONS.randomize[ Math.floor( Math.random() * OPTIONS.randomize.length ) ];
 
-				if( fs.lstatSync(newPath).isFile() ) {
+					if( Fs.lstatSync(newPath).isFile() ) {
+						OPTIONS.sound = newPath;
+					}
+				}
+
+				if( OPTIONS.randomize === true ) { //randomize defaults
+					OPTIONS.sound = $sounds[ randomize($sounds) ];
+				}
+			}
+
+			if( OPTIONS.custom.length > 0 ) { //custom sound
+				newPath = OPTIONS.custom;
+
+				if( Fs.lstatSync(newPath).isFile() ) {
 					OPTIONS.sound = newPath;
 				}
 			}
 
-			if( OPTIONS.randomize === true ) { //randomize defaults
-				OPTIONS.sound = $sounds[ randomize($sounds) ];
-			}
+			Player.play( OPTIONS.sound.replace(/ /g, '\\ '), function() {} ); //play sound
 		}
 
-		if( OPTIONS.custom.length > 0 ) { //custom sound
-			newPath = OPTIONS.custom;
 
-			if( fs.lstatSync(newPath).isFile() ) {
-				OPTIONS.sound = newPath;
-			}
+		if( OPTIONS.notifications ) { //system notifications
+			Notifier.notify({
+				'message': '  W A K E  U P  ',
+				sound: false,
+			});
 		}
 
-		var $command = 'afplay ' + OPTIONS.sound.replace(/ /g, '\\ ') + ( OPTIONS.volume === 0 ? '' : '  -v ' + OPTIONS.volume );
-
-		var com = exec($command, function(err, stdout, stderr) { //execute command
-			if(err instanceof Error) {
-				grunt.warn(err);
-			}
-		});
-
-		grunt.log.write("\n" + chalk.white.bgGreen.bold('  W A K E  U P  ') + "\n"); //feedback
+		grunt.log.write("\n" + Chalk.white.bgGreen.bold('  W A K E  U P  ') + "\n"); //feedback
 	});
 
 };
