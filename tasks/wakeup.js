@@ -2,7 +2,7 @@
  * grunt-wakeup
  * https://github.com/dominikwilkowski/grunt-wakeup
  *
- * Copyright (c) 2014-2015 Dominik Wilkowski
+ * Copyright (c) 2014-2016 Dominik Wilkowski
  * Licensed under the GNU GPLv2 license.
  */
 
@@ -68,7 +68,9 @@ module.exports = function(grunt) {
 			randomize: false,
 			custom: '',
 			notifications: false,
+			output: true,
 		});
+
 		var newPath;
 
 
@@ -110,7 +112,17 @@ module.exports = function(grunt) {
 			});
 		}
 
-		grunt.log.write("\n" + Chalk.white.bgGreen.bold('  W A K E  U P  ') + "\n"); //feedback
+
+		if( OPTIONS.output ) { //output
+			var output = ' W A K E  U P ';
+
+			if( typeof OPTIONS.output === 'string' ) {
+				output = OPTIONS.output;
+			}
+
+			grunt.log.write("\n" + Chalk.white.bgGreen.bold( ' ' + output + ' ' ) + "\n"); //feedback
+		}
+
 	});
 
 };
