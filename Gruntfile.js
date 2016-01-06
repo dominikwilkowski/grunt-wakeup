@@ -2,7 +2,7 @@
  * grunt-wakeup
  * https://github.com/dominikwilkowski/grunt-wakeup
  *
- * Copyright (c) 2014-2015 Dominik Wilkowski
+ * Copyright (c) 2014-2016 Dominik Wilkowski
  * Licensed under the GNU GPLv2 license.
  */
 
@@ -66,6 +66,18 @@ module.exports = function(grunt) {
 				options: { //deviate from defaults
 					sound: false, //turn sound off
 					notifications: true,
+				},
+			},
+
+			test5: {
+				options: { //deviate from defaults
+					output: false, //turn off output
+				},
+			},
+
+			test6: {
+				options: { //deviate from defaults
+					output: 'testing', //change output text
 				},
 			},
 		},

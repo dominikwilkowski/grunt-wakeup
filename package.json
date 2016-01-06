@@ -1,7 +1,7 @@
 {
 	"name": "grunt-wakeup",
 	"description": "Add soothing notification to your grunt watch.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"homepage": "https://github.com/dominikwilkowski/grunt-wakeup",
 	"author": {
 		"name": "Dominik Wilkowski",

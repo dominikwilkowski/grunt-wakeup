@@ -3,7 +3,7 @@ grunt-wakeup
 
 > Add soothing sound notification to your grunt watch so you don't need to watch the watch.
 
-[![NPM](https://nodei.co/npm/grunt-wakeup.png)](https://nodei.co/npm/grunt-wakeup/)
+[![NPM](https://nodei.co/npm-dl/grunt-wakeup.png)](https://nodei.co/npm/grunt-wakeup/)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -86,7 +86,7 @@ Chose from the below build-in sound notifications. You can switch sound complete
 Type: `Integer`  
 Default value: `0`
 
-**[DEPRICATED since 0.0.6]**  
+**[DEPRECATED since 0.0.6]**  
 Set the volume of your sound notification between `0` and `10`. `0` means the current system volume will be used and is the default setting.
 
 
@@ -97,10 +97,17 @@ Default value: `false`
 If you don't have your headphones on but still want to know when your grunt tasks has run. Turn system notifications on.
 
 
+#### options.output
+Type: `Boolean` or `string`  
+Default value: `true`
+
+You can turn off or change the output `wake-up` will print on your screen. Either assign `false` to turn off or pass a string to overwrite.
+
+
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used which will give you a nice easy shim.
+In this example, the default options are used which will give you a nice easy shim. (Of course there is no need to declare the default options)
 
 ```js
 grunt.initConfig({
@@ -112,6 +119,7 @@ grunt.initConfig({
 				custom: '', //custom sound file
 				volume: 0, //sound volume
 				notifications: false, //system notifications
+				output: true, //output text
 			},
 		},
 	},
@@ -152,7 +160,7 @@ grunt.initConfig({
 });
 ```
 
-Or maybe you just one custom sound not [randomized](#optionsrandomize).
+Or maybe you want just one custom sound not [randomized](#optionsrandomize).
 
 ```js
 grunt.initConfig({
@@ -181,7 +189,7 @@ grunt.initConfig({
 ```
 
 
-Enabling the [notifications](optionsnotifications) and switching [sound](#optionssound) completely off.
+Enabling the [notifications](optionsnotifications), switching [sound](#optionssound) completely off and removning the [output](#optionsoutput).
 
 ```js
 grunt.initConfig({
@@ -190,6 +198,22 @@ grunt.initConfig({
 			options: {
 				sound: false,
 				notifications: true,
+				output: false,
+			}
+		},
+	},
+});
+```
+
+
+Customizing the [output](#optionsoutput) text with:
+
+```js
+grunt.initConfig({
+	wakeup: {
+		wakeme: {
+			options: {
+				output: ' W A K E  U P  P L E A S E ',
 			}
 		},
 	},
@@ -201,6 +225,7 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+* 0.1.1 - added output option
 * 0.1.0 - removed volume option, added system notifications, added option to turn sound off
 * 0.0.5 - __dirname fixes
 * 0.0.4 - path fixes
@@ -209,4 +234,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * 0.0.1 - alpha test
 
 ## License
-Copyright (c) 2014-2015 Dominik Wilkowski. Licensed under the [GNU GPLv2](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE).
+Copyright (c) 2014-2016 Dominik Wilkowski. Licensed under the [GNU GPLv2](https://github.com/dominikwilkowski/grunt-wakeup/blob/master/LICENSE).
