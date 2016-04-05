@@ -225,7 +225,8 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-* 0.1.2 - Updated peerDependencies for grunt 1.0
+* 0.1.3 - Updated peerDependencies for grunt 1.0
+* 0.1.2 - Updated devDependencies for grunt 1.0
 * 0.1.1 - added output option
 * 0.1.0 - removed volume option, added system notifications, added option to turn sound off
 * 0.0.5 - __dirname fixes
